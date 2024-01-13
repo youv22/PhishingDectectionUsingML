@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 
-with open("mini_dataset/0.html", encoding="utf-8") as f:
+with open("0.html", encoding="utf-8") as f:
     test = f.read()
 
 soup = BeautifulSoup(test, "html.parser")
