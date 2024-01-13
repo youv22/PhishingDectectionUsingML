@@ -76,7 +76,7 @@ def create_2d_list(folder_name):
         data.append(create_vector(soup))
     return data
 
-
+"""
 #5 Create a Dataframe by using a 2-D array
 data = create_2d_list(folder)
 
@@ -129,4 +129,4 @@ columns = [
 df = pd.DataFrame(data=data, columns=columns)
 
 print(df.head(5))
-
+"""
