@@ -1,11 +1,10 @@
 """
-from bs4 import BeautifulSoup
-
 with open("mini_dataset/0.html", encoding="utf-8") as f:
     test = f.read()
 
 soup = BeautifulSoup(test, "html.parser")
 """
+from bs4 import BeautifulSoup
 
 #has_title
 def has_title(soup):
