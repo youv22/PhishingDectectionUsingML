@@ -4,6 +4,7 @@ import feature_extraction as fe
 from bs4 import BeautifulSoup
 import requests as re
 import matplotlib.pyplot as plt
+import time
 
 
 st.title('Phishing Website Detection using Machine Learning')
@@ -89,6 +90,7 @@ url = st.text_input('Enter the URL')
 # check the url is valid or not
 if st.button('Check!'):
     try:
+             start_time = time.time()  # Record the start time
         response = re.get(url, verify=False, timeout=4)
         if response.status_code != 200:
             print(". HTTP connection was not successful for the URL: ", url)
@@ -96,11 +98,20 @@ if st.button('Check!'):
          response.raise_for_status()  # Check if the HTTP request was successful
          soup = BeautifulSoup(response.content, "html.parser")
          vector = [fe.create_vector(soup)]  # it should be 2d array, so I added []
+         model_start_time = time.time()  # Record the start time for model prediction
          result = model.predict(vector)
+         model_end_time = time.time()  # Record the end time for model prediction
+                 
          if result[0] == 0:
                   st.success("This web page seems a legitimate!")
          else:
                   st.warning("Attention! This web page is a potential PHISHING!")
+
+         end_time = time.time()  # Record the end time
+         total_time = end_time - start_time
+         model_time = model_end_time - model_start_time
+         st.info(f"Total time: {total_time:.4f} seconds")
+         st.info(f"Model prediction time: {model_time:.4f} seconds")
 
     except re.exceptions.HTTPError as e:
         st.error(f"HTTP error occurred: {e}")
