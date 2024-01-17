@@ -94,15 +94,13 @@ if st.button('Check!'):
             print(". HTTP connection was not successful for the URL: ", url)
         else:
          response.raise_for_status()  # Check if the HTTP request was successful
-            soup = BeautifulSoup(response.content, "html.parser")
-            vector = [fe.create_vector(soup)]  # it should be 2d array, so I added []
-            result = model.predict(vector)
-            if result[0] == 0:
-                st.success("This web page seems a legitimate!")
-                #st.balloons()
-            else:
-                st.warning("Attention! This web page is a potential PHISHING!")
-                #st.snow()
+         soup = BeautifulSoup(response.content, "html.parser")
+         vector = [fe.create_vector(soup)]  # it should be 2d array, so I added []
+         result = model.predict(vector)
+         if result[0] == 0:
+                  st.success("This web page seems a legitimate!")
+         else:
+                  st.warning("Attention! This web page is a potential PHISHING!")
 
     except re.exceptions.HTTPError as e:
         st.error(f"HTTP error occurred: {e}")
