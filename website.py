@@ -93,6 +93,7 @@ if st.button('Check!'):
         if response.status_code != 200:
             print(". HTTP connection was not successful for the URL: ", url)
         else:
+         response.raise_for_status()  # Check if the HTTP request was successful
             soup = BeautifulSoup(response.content, "html.parser")
             vector = [fe.create_vector(soup)]  # it should be 2d array, so I added []
             result = model.predict(vector)
@@ -103,5 +104,13 @@ if st.button('Check!'):
                 st.warning("Attention! This web page is a potential PHISHING!")
                 #st.snow()
 
-    except re.exceptions.RequestException as e:
-        print("--> ", e)
+    except re.exceptions.HTTPError as e:
+        st.error(f"HTTP error occurred: {e}")
+    except re.exceptions.Timeout:
+        st.error("Request timed out. This could be due to a slow or unresponsive server. Please try again later.")
+    except re.exceptions.TooManyRedirects:
+        st.error("Too many redirects. Please check the URL.")
+    except re.exceptions.ConnectionError:
+        st.error("Connection error. Please check the URL and try again.")
+    except Exception as e:
+        st.error(f"An unexpected error occurred: {e}")
