@@ -93,14 +93,14 @@ if st.button('Check!'):
          start_time = time.time()  # Record the start time
          response = re.get(url, verify=False, timeout=4)
          if response.status_code != 200:
-            print(". HTTP connection was not successful for the URL: ", url)
+                  print(". HTTP connection was not successful for the URL: ", url)
          else:
-         response.raise_for_status()  # Check if the HTTP request was successful
-         soup = BeautifulSoup(response.content, "html.parser")
-         vector = [fe.create_vector(soup)]  # it should be 2d array, so I added []
-         model_start_time = time.time()  # Record the start time for model prediction
-         result = model.predict(vector)
-         model_end_time = time.time()  # Record the end time for model prediction
+                  response.raise_for_status()  # Check if the HTTP request was successful
+                  soup = BeautifulSoup(response.content, "html.parser")
+                  vector = [fe.create_vector(soup)]  # it should be 2d array, so I added []
+                  model_start_time = time.time()  # Record the start time for model prediction
+                  result = model.predict(vector)
+                  model_end_time = time.time()  # Record the end time for model prediction
                  
          if result[0] == 0:
                   st.success("This web page seems a legitimate!")
