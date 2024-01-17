@@ -90,7 +90,7 @@ url = st.text_input('Enter the URL')
 # check the url is valid or not
 if st.button('Check!'):
     try:
-             start_time = time.time()  # Record the start time
+         start_time = time.time()  # Record the start time
         response = re.get(url, verify=False, timeout=4)
         if response.status_code != 200:
             print(". HTTP connection was not successful for the URL: ", url)
