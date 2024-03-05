@@ -17,12 +17,11 @@ with st.expander("PROJECT DETAILS"):
     st.subheader('Approach')
 
     st.write('I used _supervised learning_ to classify phishing and legitimate websites. '
-             'I benefit from content-based approach and focus on html of the websites. '
-             'Also, I used scikit-learn for the ML models. '
+             'Content-and-URL-based approach was used to classify as website as "Legitimate" or "Potentially Phishing". '
              )
 
-    st.write('For my Masters thesis, '
-             'I first created my own data set and defined features. '
+    st.write('For this thesis, '
+             'The datasets were first structured and features were defined. '
              'Some features were derived from the literature review and others were based on manual analysis. '
              'The requests library was used to collect data, BeautifulSoup module to parse and extract features. ')
 
