@@ -8,9 +8,9 @@ import time
 
 
 st.title('Phishing Website Detection using Machine Learning')
-st.write('This website has been developed for my ongoing Masters dissertation at University of Technology, Mauritius. '
+st.write('This website has been developed for my ongoing Masters thesis at University of Technology, Mauritius. '
          'The objective of the website is detecting phishing websites using content data. '
-         'You can see the details of approach, data set, and feature set if you click on _"Project Details"_.')
+         'You can refer to the details of approach, data set, and feature set by clicking on _"Project Details"_.')
 
 with st.expander("PROJECT DETAILS"):
 
