@@ -62,7 +62,7 @@ with st.expander("PROJECT DETAILS"):
 
 choice = st.selectbox("Please select your machine learning model",
                       [
-                          'Gaussian Naive Bayes', 'Support Vector Machine', 'Decision Tree', 'Random Forest',
+                          'Random Forest', 'Gaussian Naive Bayes', 'Support Vector Machine', 'Decision Tree', 
                           'AdaBoost'
                       ]
                       )
